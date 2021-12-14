@@ -7,6 +7,7 @@ $id = 0;
 $update = false;
 $name = '';
 $location = '';
+$columns = array("name", "location");
 
 
 if (isset($_POST['save'])) {
@@ -23,11 +24,11 @@ if (isset($_POST['save'])) {
 
 // FIXME
 if (isset($_GET['delete'])) {
+   $id = $_GET['delete'];
+   $mysqli->query("DELETE FROM data WHERE id=$id") or die (mysqli_error($mysqli));
    //This line below isn't been read inside this if condition
    $_SESSION['message'] = "Record has been deleted!";
    $_SESSION['msg_type'] = "danger";
-   $id = $_GET['delete'];
-   $mysqli->query("DELETE FROM data WHERE id=$id") or die (mysqli_error($mysqli));
    header("location: index.php");
 }
 

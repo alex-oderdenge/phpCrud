@@ -71,7 +71,16 @@
                   <input type="text" name="name" class="form-control" value="<?php echo $name ?>" placeholder="Enter your name">
                </div>
                <div class="form-group">
-                  <label>location</label>
+                  <label>
+                     <?php 
+                        //echo implode(", ",$columns)
+                        //echo count($columns);
+                        for ($i = 0; $i <= count($columns)-1; $i++) {
+                           echo $columns[$i];
+                           echo " ";
+                       }
+                     ?>
+                  </label>
                   <input type="text" name="location" class="form-control" value="<?php echo $location ?>" placeholder="Enter your location">
                </div>
                <div class="form-group">

@@ -66,23 +66,12 @@
          <div class="row justify-content-center">
             <form action="process.php" method="post">
                <input type="hidden" name="id" value="<?php echo $id;?>">
+               <?php for ($i = 0; $i <= count($columns)-1; $i++): ?>
                <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" name="name" class="form-control" value="<?php echo $name ?>" placeholder="Enter your name">
+                  <label><?php echo $columns[$i];?></label>
+                  <input type="text" name="<?php echo $columns[$i];?>" class="form-control" value="<?php echo $name ?>" placeholder="Enter your <?php echo $columns[$i];?>">
                </div>
-               <div class="form-group">
-                  <label>
-                     <?php 
-                        //echo implode(", ",$columns)
-                        //echo count($columns);
-                        for ($i = 0; $i <= count($columns)-1; $i++) {
-                           echo $columns[$i];
-                           echo " ";
-                       }
-                     ?>
-                  </label>
-                  <input type="text" name="location" class="form-control" value="<?php echo $location ?>" placeholder="Enter your location">
-               </div>
+               <?php endfor ?>
                <div class="form-group">
                   <?php if ($update == true): ?>
                      <button type="submit" class="btn btn-info" name="update">Update</button>

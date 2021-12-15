@@ -8,18 +8,28 @@ $update = false;
 $name = '';
 $location = '';
 $columns = array("name", "location");
-
+$values = "";
 
 if (isset($_POST['save'])) {
    $name = $_POST['name'];
    $location = $_POST['location'];
-   $mysqli->query("INSERT INTO data (name, location) VALUES ('$name', '$location')") or die(mysqli_error($mysqli));
+   
+   for ($i = 0; $i < count($columns); $i++) {
+      $values = $values . "$" . $columns[$i];
+      if ($i < count($columns) -1) {
+         $values = $values .", ";
+      }
+   }
+   echo 'INSERT INTO data ('.implode(",", $columns).') VALUES ("'.$values.'")';
+
+
+   //$mysqli->query("INSERT INTO data (implode(",", $columns)) VALUES ('$name', '$location')") or die(mysqli_error($mysqli));
    
   
    $_SESSION['message'] = "Record has been saved!";
    $_SESSION['msg_type'] = "success";
 
-   header("location: index.php");
+   //header("location: index.php");
 }
 
 // FIXME

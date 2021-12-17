@@ -21,14 +21,13 @@ if (isset($_POST['save'])) {
    header("location: index.php");
 }
 
-// FIXME
+
 if (isset($_GET['delete'])) {
-   //This line below isn't been read inside this if condition
    $_SESSION['message'] = "Record has been deleted!";
    $_SESSION['msg_type'] = "danger";
    $id = $_GET['delete'];
    $mysqli->query("DELETE FROM data WHERE id=$id") or die (mysqli_error($mysqli));
-   header("location: index.php");
+   //header("location: index.php");
 }
 
 if (isset($_GET['edit'])){

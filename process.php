@@ -1,5 +1,4 @@
 <?php
-//Youtube video used to make this repo: https://www.youtube.com/watch?v=3xRMUDC74Cw
 
 session_start();
 $mysqli = new mysqli('localhost', 'root', '', 'crud') or die (mysqli_error($mysqli));
